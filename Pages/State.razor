@@ -1,0 +1,62 @@
+@page "/state"
+
+<h1>State</h1>
+
+<div>
+    <div class="form-group">
+        <select @bind="SetStateContext" class="form-control">
+            <option value="A">ConcreteA</option>
+            <option value="B">ConcreteB</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" @onmousedown="MouseDownEvent" @onmouseup="MouseUpEvent">Fire State</button>
+</div>
+<br><br>
+<code>
+    @mouseDownReturn
+    <br>
+    @mouseUpReturn
+</code>
+
+@code {
+
+    string selectedValue = "A";
+    string mouseDownReturn = "";
+    string mouseUpReturn = "";
+    IState state = new ConcreteA();
+
+    string SetStateContext
+    {
+        get
+        { 
+            return selectedValue; 
+        }
+        set
+        {
+            mouseDownReturn = "";
+            mouseUpReturn = "";
+
+            if (value.Equals("A")) 
+            {
+                state = new ConcreteA();
+            } 
+            else if (value.Equals("B"))
+            {
+                state = new ConcreteB();
+            }
+            
+            selectedValue = value;
+        }
+    }
+
+    public void MouseDownEvent()
+    {
+        mouseDownReturn = state.MouseDown();
+    }
+
+    public void MouseUpEvent()
+    {
+        mouseUpReturn = state.MouseUp();
+    }
+
+}

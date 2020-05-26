@@ -9,7 +9,10 @@ class Originator
 
     public void restore(State state)
     {
-        content = state.getContent();
+        if (state != null)
+        {
+            content = state.getContent();
+        }
     }
 
     public string getContent()

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 class History
 {
-    private IList<State> states = new List<State>();
+    public IList<State> states = new List<State>();
 
     public void push(State state)
     {
@@ -12,10 +12,24 @@ class History
 
     public State pop()
     {
-        int lastIndex = this.states.Count - 1;
-        System.Console.WriteLine(lastIndex);
-        State lastState = this.states.ElementAt(lastIndex);
-        this.states.Remove(lastState);
-        return lastState;
+        if (this.getLast() != null)
+        {
+            this.states.Remove(this.getLast());
+        }
+        return this.getLast();
+    }
+
+    private State getLast()
+    {
+        if (this.states.Count > 0)
+        {
+            int lastIndex = this.states.Count - 1;
+            State lastState = this.states.ElementAt(lastIndex);
+            return lastState;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

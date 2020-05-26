@@ -2,22 +2,43 @@
 
 <h1>Memento</h1>
 
-<code>
-    @orig.getContent()
-</code>
+<button class="btn btn-primary" @onclick="PushState">Push Restore</button>
+<button class="btn btn-primary" @onclick="RestoreState">Restore State</button>
+
+<br><br>
+<div class="row">
+    <div class="col col-6">
+        <code>
+            @orig.getContent()
+        </code>
+    </div>
+    <div class="col col-6">
+        <code>
+            @foreach (var state in history.states)
+            {
+                @state.getContent() <br>
+            }
+        </code>
+    </div>
+</div>
 
 @code {
+    int interator = 0;
     Originator orig = new Originator();
     History history = new History();
-    protected override void OnInitialized()
+
+    public void PushState()
     {
-        orig.setContent("Welison");
+        interator++;
+        orig.setContent("Welison - " + interator);
         history.push(orig.createState());
-
-        orig.setContent("Menezes");
-        history.push(orig.createState());
-
-        orig.setContent("Siqueira");
-        orig.restore(history.pop());
+        StateHasChanged();
     }
+
+    public void RestoreState()
+    {
+        orig.restore(history.pop());
+        StateHasChanged();
+    }
+
 }
