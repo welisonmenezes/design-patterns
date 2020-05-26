@@ -1,0 +1,23 @@
+@page "/memento"
+
+<h1>Memento</h1>
+
+<code>
+    @orig.getContent()
+</code>
+
+@code {
+    Originator orig = new Originator();
+    History history = new History();
+    protected override void OnInitialized()
+    {
+        orig.setContent("Welison");
+        history.push(orig.createState());
+
+        orig.setContent("Menezes");
+        history.push(orig.createState());
+
+        orig.setContent("Siqueira");
+        orig.restore(history.pop());
+    }
+}
