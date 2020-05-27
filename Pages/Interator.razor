@@ -1,0 +1,72 @@
+@page "/interator"
+
+<h1>Interator</h1>
+
+<button class="btn btn-primary" @onclick="PushItem">Push Item</button>
+<button class="btn btn-primary" @onclick="PopItem">Pop Item</button>
+<button class="btn btn-primary" @onclick="NextItem">Go to Next</button>
+<button class="btn btn-primary" @onclick="PrevItem">Go to Prev</button>
+
+<br><br>
+<div class="row">
+    <div class="col col-6">
+        <code>
+            @current
+        </code>
+    </div>
+    <div class="col col-6">
+        <code>
+            @foreach (var item in history.items)
+            {
+                @item <br>
+            }
+        </code>
+    </div>
+</div>
+
+@using Classes.Interator
+
+@code {
+    History history = new History();
+    int index = 0;
+    IInterator<string> interator;
+    string current;
+    
+    protected override void OnInitialized()
+    {
+        interator = history.createInterator();
+    }
+
+    public void PushItem()
+    {
+        index++;
+        history.push("Welison - " + index);
+        current = interator.current();
+        StateHasChanged();
+    }
+
+    public void PopItem()
+    {
+        history.pop();
+        current = interator.current();
+        StateHasChanged();
+    }
+
+    public void NextItem()
+    {
+        if (interator.hasNext())
+        {
+            interator.next();
+            current = interator.current();
+        }
+    }
+
+    public void PrevItem()
+    {
+        if (interator.hasPrev())
+        {
+            interator.prev();
+            current = interator.current();
+        }
+    }
+}
