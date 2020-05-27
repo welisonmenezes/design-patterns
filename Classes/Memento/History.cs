@@ -1,35 +1,39 @@
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
-class History
+
+namespace design_patterns.Classes.Memento
 {
-    public IList<State> states = new List<State>();
-
-    public void push(State state)
+    class History
     {
-        this.states.Add(state);
-    }
+        public IList<State> states = new List<State>();
 
-    public State pop()
-    {
-        if (this.getLast() != null)
+        public void push(State state)
         {
-            this.states.Remove(this.getLast());
+            this.states.Add(state);
         }
-        return this.getLast();
-    }
 
-    private State getLast()
-    {
-        if (this.states.Count > 0)
+        public State pop()
         {
-            int lastIndex = this.states.Count - 1;
-            State lastState = this.states.ElementAt(lastIndex);
-            return lastState;
+            if (this.getLast() != null)
+            {
+                this.states.Remove(this.getLast());
+            }
+            return this.getLast();
         }
-        else
+
+        private State getLast()
         {
-            return null;
+            if (this.states.Count > 0)
+            {
+                int lastIndex = this.states.Count - 1;
+                State lastState = this.states.ElementAt(lastIndex);
+                return lastState;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

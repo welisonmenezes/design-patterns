@@ -1,5 +1,8 @@
-interface IState
+namespace design_patterns.Classes.State
 {
-    string MouseDown();
-    string MouseUp();
+    interface IState
+    {
+        string MouseDown();
+        string MouseUp();
+    }
 }

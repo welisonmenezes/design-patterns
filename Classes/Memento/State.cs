@@ -1,14 +1,17 @@
-class State
+namespace design_patterns.Classes.Memento
 {
-    private readonly string content;
-
-    public State(string content)
+    class State
     {
-        this.content = content;
+        private readonly string content;
+
+        public State(string content)
+        {
+            this.content = content;
+        }
+
+        public string getContent()
+        {
+            return this.content;
+        }
     }
-
-    public string getContent()
-    {
-        return this.content;
-    }    
 }

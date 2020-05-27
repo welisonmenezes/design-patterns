@@ -1,27 +1,30 @@
-class Originator
+namespace design_patterns.Classes.Memento
 {
-    private string content { get; set; }
-
-    public State createState()
+    class Originator
     {
-        return new State(this.content);
-    }
+        private string content { get; set; }
 
-    public void restore(State state)
-    {
-        if (state != null)
+        public State createState()
         {
-            content = state.getContent();
+            return new State(this.content);
         }
-    }
 
-    public string getContent()
-    {
-        return this.content;
-    }
+        public void restore(State state)
+        {
+            if (state != null)
+            {
+                content = state.getContent();
+            }
+        }
 
-    public void setContent(string content)
-    {
-        this.content = content;
+        public string getContent()
+        {
+            return this.content;
+        }
+
+        public void setContent(string content)
+        {
+            this.content = content;
+        }
     }
 }

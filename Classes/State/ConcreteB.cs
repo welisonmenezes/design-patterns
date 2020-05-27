@@ -1,12 +1,15 @@
-class ConcreteB : IState
+namespace design_patterns.Classes.State
 {
-    public string MouseDown()
+    class ConcreteB : IState
     {
-        return "ContreteB MouseDown";
-    }
+        public string MouseDown()
+        {
+            return "ContreteB MouseDown";
+        }
 
-    public string MouseUp()
-    {
-        return "ContreteB MouseUp";
+        public string MouseUp()
+        {
+            return "ContreteB MouseUp";
+        }
     }
 }
