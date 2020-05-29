@@ -1,0 +1,38 @@
+@page "/strategy"
+
+<h1>Strategy</h1>
+
+<div>
+    <button class="btn btn-primary" @onclick="ClickEventA">Fire Strategy A</button>
+    <button class="btn btn-primary" @onclick="ClickEventB">Fire Strategy B</button>
+</div>
+<br><br>
+<code>
+    @theStrategy
+</code>
+
+@using Classes.Strategy
+
+@code {
+
+    StrategyCaller caller;
+    string theStrategy;
+
+    protected override void OnInitialized()
+    {
+        caller = new StrategyCaller();
+    }
+    
+    public void ClickEventA()
+    {
+        theStrategy = caller.showStrategy(new ConcreteA());
+        StateHasChanged();
+    }
+
+    public void ClickEventB()
+    {
+        theStrategy = caller.showStrategy(new ConcreteB());
+        StateHasChanged();
+    }
+
+}
