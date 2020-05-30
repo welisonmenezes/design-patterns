@@ -1,0 +1,40 @@
+@page "/template"
+
+<h1>Template</h1>
+
+<div>
+    <button class="btn btn-primary" @onclick="ClickEventA">Concrete A</button>
+    <button class="btn btn-primary" @onclick="ClickEventB">Concrete B</button>
+</div>
+<br><br>
+<code>
+    @theReturn
+</code>
+
+@using Patterns.Template
+
+@code {
+
+    Temlate concreteA;
+    Temlate concreteB;
+    string theReturn;
+
+    protected override void OnInitialized()
+    {
+        concreteA = new ConcreteA();
+        concreteB = new ConcreteB();
+    }
+    
+    public void ClickEventA()
+    {
+        theReturn = concreteA.execute();
+        StateHasChanged();
+    }
+
+    public void ClickEventB()
+    {
+        theReturn = concreteB.execute();
+        StateHasChanged();
+    }
+
+}
