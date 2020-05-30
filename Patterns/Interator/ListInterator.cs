@@ -1,5 +1,5 @@
 using System.Linq;
-namespace  design_patterns.Classes.Interator
+namespace  design_patterns.Patterns.Interator
 {
     class ListInterator : IInterator<string>
     {

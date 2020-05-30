@@ -1,4 +1,4 @@
-namespace design_patterns.Classes.State
+namespace design_patterns.Patterns.State
 {
     class ConcreteB : IState
     {

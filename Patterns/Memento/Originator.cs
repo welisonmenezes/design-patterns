@@ -1,4 +1,4 @@
-namespace design_patterns.Classes.Memento
+namespace design_patterns.Patterns.Memento
 {
     class Originator
     {

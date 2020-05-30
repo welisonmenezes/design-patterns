@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace design_patterns.Classes.Memento
+namespace design_patterns.Patterns.Memento
 {
     class History
     {

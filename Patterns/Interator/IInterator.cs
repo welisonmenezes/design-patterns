@@ -1,4 +1,4 @@
-namespace  design_patterns.Classes.Interator
+namespace  design_patterns.Patterns.Interator
 {
     interface IInterator<T>
     {

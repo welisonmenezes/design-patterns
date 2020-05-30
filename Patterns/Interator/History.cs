@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace design_patterns.Classes.Interator
+namespace design_patterns.Patterns.Interator
 {
     class History
     {

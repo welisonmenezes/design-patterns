@@ -1,4 +1,4 @@
-namespace design_patterns.Classes.Strategy
+namespace design_patterns.Patterns.Strategy
 {
     class ConcreteB : IStrategy
     {
