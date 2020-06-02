@@ -16,8 +16,7 @@ namespace design_patterns.Patterns.UndoCommand
         {
             this.prevContent = receiver.Content;
             receiver.MakeTranformation();
-            System.Console.WriteLine(this);
-            history.push(this);
+            history.push((IUndoCommand) this.MemberwiseClone());
         }
 
         public void unexecute()

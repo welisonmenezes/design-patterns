@@ -26,7 +26,7 @@
         receiver = new Receiver();
         receiver.Content = "Welison";
         concreteCommand = new ConcreteCommand(receiver, history);
-        undocommand = new UndoingCommand(receiver, history);
+        undocommand = new UndoingCommand(history);
     }
 
     public void ClickEventDo()

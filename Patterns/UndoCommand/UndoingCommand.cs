@@ -4,7 +4,7 @@ namespace design_patterns.Patterns.UndoCommand
     {
         private History history;
 
-        public UndoingCommand(Receiver receiver, History history)
+        public UndoingCommand(History history)
         {
             this.history = history;
         }
