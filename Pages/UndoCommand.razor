@@ -1,0 +1,43 @@
+@page "/undocommand"
+
+<h1>UndoCommand</h1>
+
+<div>
+    <button class="btn btn-primary" @onclick="ClickEventDo">Do</button>
+    <button class="btn btn-primary" @onclick="ClickEventUndo">Undo</button>
+</div>
+<br><br>
+<code>
+    @receiver.Content
+</code>
+
+@using Patterns.UndoCommand
+
+@code {
+
+    Receiver receiver;
+    History history;
+    IUndoCommand concreteCommand;
+    ICommand undocommand;
+
+    protected override void OnInitialized()
+    {
+        history = new History();
+        receiver = new Receiver();
+        receiver.Content = "Welison";
+        concreteCommand = new ConcreteCommand(receiver, history);
+        undocommand = new UndoingCommand(receiver, history);
+    }
+
+    public void ClickEventDo()
+    {
+        concreteCommand.execute();
+        StateHasChanged();
+    }
+
+    public void ClickEventUndo()
+    {
+        undocommand.execute();
+        StateHasChanged();
+    }
+}
