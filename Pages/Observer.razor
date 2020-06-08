@@ -3,7 +3,7 @@
 <h1>Observer</h1>
 
 <div>
-    <button class="btn btn-primary" >Notify</button>
+    <button class="btn btn-primary" @onclick="ChangeValue">Change Value</button>
 </div>
 <br><br>
 <code>
@@ -31,4 +31,8 @@
         dataSource.Value = "Initial Value";
     }
 
+    public void ChangeValue()
+    {
+        dataSource.Value = "New Value";
+    }
 }
