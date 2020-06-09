@@ -1,0 +1,41 @@
+@page "/mediator-observer"
+
+<h1>Mediator Observer</h1>
+
+<button class="btn btn-primary" @onclick="ChangeA">Change A</button>
+<button class="btn btn-primary" @onclick="ChangeB">Change B</button>
+<button class="btn btn-primary" @onclick="ChangeC">Change C</button>
+
+<br><br>
+
+<code>
+    @mediator.concreteA.Value
+    <br>
+    @mediator.concreteB.Value
+    <br>
+    @mediator.concreteC.Value
+</code>
+
+
+@using Patterns.MediatorObserver
+
+@code {
+
+    TheMediator mediator = new TheMediator();
+
+    public void ChangeA() 
+    {
+        mediator.SetConcreteA();
+    }
+
+    public void ChangeB() 
+    {
+        mediator.SetConcreteB();
+    }
+
+    public void ChangeC() 
+    {
+        mediator.SetConcreteC();
+    }
+
+}
